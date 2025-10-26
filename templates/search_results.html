@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Finder</title>
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --accent:#7c3aed;
+      --muted:#9aa7b2;
+      --glass:rgba(255,255,255,0.03)
+    }
+    *{box-sizing:border-box}
+    body{
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      margin:0;
+      background:linear-gradient(180deg,#071024 0%, #071a2e 100%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased
+    }
+    .container{max-width:960px;margin:32px auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700;color:white}
+    h1{margin:0;font-size:20px}
+    .muted{color:var(--muted);font-size:13px}
+    nav a{color:var(--accent);text-decoration:none;padding:8px 12px;border-radius:8px;display:inline-block}
+    .card{background:var(--card);border-radius:12px;padding:20px;box-shadow:0 6px 24px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+    .results{margin-top:12px}
+    .result-item{padding:12px;border-radius:10px;background:rgba(255,255,255,0.02);margin-bottom:10px}
+    .result-item h4{margin:0 0 6px 0}
+    .btn{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;border:none;cursor:pointer}
+    footer{margin-top:20px;color:var(--muted);font-size:13px}
+    @media(max-width:560px){.logo{width:36px;height:36px}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">F</div>
+        <div>
+          <h1>Search Results</h1>
+          <div class="muted">Results for "{{ query }}"</div>
+        </div>
+      </div>
+      <nav>
+        <a href="/" class="btn">Home</a>
+        <a href="/login" class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)">Login</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="card">
+        {% if results %}
+          <div class="results">
+            {% for post in results %}
+              <div class="result-item">
+                <h4>{{ post['title'] }}</h4>
+                <p>{{ post['body'] }}</p>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <p class="muted">No results found for "{{ query }}".</p>
+        {% endif %}
+      </section>
+
+    </main>
+  </div>
+</body>
+</html>
