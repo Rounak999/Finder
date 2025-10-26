@@ -10,7 +10,7 @@ The flag can be found once you login as admin and by calling a specific endpoint
 🔍 Good luck and happy hacking! 🎯
 
 ### Note
-Try to flag from non localhost IP. 
+Try to play this CTF from non localhost IP. 
 
 ### Getting Started
 
